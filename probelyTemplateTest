@@ -1,0 +1,31 @@
+{
+    "AWSTemplateFormateVersion": "2010-09-09",
+    "Description": "Version 1 template for Probely using CloudFormation, potentially running Fargate",
+    "Resources": {
+        "MyEcsService": {
+            "Type": "AWS::ECS::Service",
+            "Properties": {
+                "Cluster": "MyEcsCluster",
+                "DesiredCount": "?",
+                "LaunchType": "FARGATE",
+                "NetworkConfigration": {
+                    "AwsvpcConfiguration": {
+                        "Subnets": [
+                          "subnet-??"
+                        ],
+                        "SecurityGroups": [
+                            "sg-??"
+                        ]
+                    }
+                },
+                "LoadBalancers": [
+                    {
+                        "ContainerName": "probely-test-app",
+                        "ContainerPort": 80,
+                        "TargetGroupArn": "??"
+                    }
+                ]
+            }
+        }
+    }
+}
